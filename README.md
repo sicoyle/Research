@@ -21,7 +21,7 @@ Algorithmic efficiency has become hugely important due to the need to analyze ma
 - Utilize a Fibonacci algorithm for both the recursive and dynamic algorithm. Execute the programs utilizing Fibonacci numbers of 20, 30, 40, and 50, gathering data on runtime, CPU-cycles, task-clock rates, instruction counts, clock rate, page-faults, cache-misses, % of all cache refs, and speedup.
 3. Analysis
 - Compare the results across the various programming languages tested, and in terms of the dynamic algorithm, versus the recursive algorithm.
-- Focus on C++ vs Python
+- Focus on C vs Python
 
 ### Algorithm Results
 #### Observations
