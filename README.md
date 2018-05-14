@@ -24,7 +24,7 @@ Algorithmic efficiency has become hugely important due to the need to analyze ma
 - Focus on C++ vs Python
 
 ### Algorithm Results
-#### Observations
+##### Observations
 The overall runtime for the recursive algorithms were larger than the dynamic algorithm runtimes. The overall trend for the recursive algorithms included an increase in resource consumption for the Fibonacci numbers of 30 and 40, whereas the dynamic algorithm results trended mostly linearly.
 
 #### Analysis
