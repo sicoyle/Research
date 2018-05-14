@@ -63,18 +63,18 @@ C++ was faster than Decorated Python with a speedup of almost 30 for Fibonacci o
 
 
 ### Code
-The code can be found within my [repository](https://github.com/sicoyle/Research).
+The code can be found within my [research repository](https://github.com/sicoyle/Research).
 
-###Acknowledgements
+### Acknowledgements
 Special thanks to Mr. Gregory Lakomski for his valuable input, expertise, and guidance on this project. I also appreciate him allowing me to utilize his Intel Nuc for testing purposes. I appreciate Dr. Apan Qasem for setting up a server for me to test on, as well as for providing the resources that were essential to the success of this research. Also, I appreciate the encouragement that my family and friends provided.
 
 ### Future Work
-```markdown
 Further research can be put into exploring more languages, utilizing a higher experimental scope, as well as comparing more of the resources consumed. In addition, other resource monitoring tools can be utilized to determine the validity of these results.
 
-I plan to continue this research Fall 2018.
 
+### Personal Goals
+```markdown
+I plan to continue this research Fall 2018.
 I am also working to add the corresponding graphs to this site.
 ```
-
 
