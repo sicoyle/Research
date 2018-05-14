@@ -62,16 +62,19 @@ C++ was faster than Decorated Python with a speedup of almost 30 for Fibonacci o
 5. Decorated Python outperformed C++ in regard to execution time and speedup, CPU cycles, clock rate, and instruction count. However, Decorated Python was far costlier in terms of page faults, and cache misses.
 
 
-### C++ Recursive Algorithm
-```markdown
+### Code
+The code can be found within my [repository](https://github.com/sicoyle/Research).
 
+###Acknowledgements
+Special thanks to Mr. Gregory Lakomski for his valuable input, expertise, and guidance on this project. I also appreciate him allowing me to utilize his Intel Nuc for testing purposes. I appreciate Dr. Apan Qasem for setting up a server for me to test on, as well as for providing the resources that were essential to the success of this research. Also, I appreciate the encouragement that my family and friends provided.
+
+### Future Work
+```markdown
+Further research can be put into exploring more languages, utilizing a higher experimental scope, as well as comparing more of the resources consumed. In addition, other resource monitoring tools can be utilized to determine the validity of these results.
+
+I plan to continue this research Fall 2018.
+
+I am also working to add the corresponding graphs to this site.
 ```
 
 
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/sicoyle/Research/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
