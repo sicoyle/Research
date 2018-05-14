@@ -55,16 +55,17 @@ n took longer for its task clock rates than that of Decorated Python with Fib of
 C++ was faster than Decorated Python with a speedup of almost 30 for Fibonacci of 20, but the two switched places after Fibonacci of 30, with Decorated Python ending Fibonacci of 40 almost 90 times faster than C++. Decorated Python had fewer CPU cycles at 60,976,899.33 cycles, with C++ using 858,889,235,221. Decorated Python also outperformed C++ in regard to instruction count, having 28,075,491.67 instructions, and C++ using 6,169,788,902. Both used about 0.9 CPUs, but C++ used 2.156 GHz, and Decorated Python only used 1.666 GHz for Fibonacci of 40. On the other hand, Decorated Python had at least 810 page faults for every Fibonacci value tested, whereas C++ had at most 41 page faults. Decorated Python was also costlier for cache misses. However, C++’s cache misses as a percent of all cache references decreased from about 25% to 10% and Decorated Python maintained 15% for every trial.
 
 ### Summary Statements
-```markdown
 1. C++ outperformed Python in almost every regard
 2. Python was less efficient with its memory allocation, resulting in many more page faults and cache misses.
 3. With many recursive calls, C++ would be the better choice with a faster execution time. However, inline C++ used far fewer CPU cycles, with hundreds of millions more instructions than C++ did. When it comes down to the cache, there is little difference between inline C++ and C++.
 4. Having a decorated Python function takes a bit longer to execute, but it significantly improved the number of CPU cycles utilized, the number of instructions executed, and far fewer cache misses. Decorated Python does take a hit with more page faults and a constant of about 15% of all cache references being cache misses.
 5. Decorated Python outperformed C++ in regard to execution time and speedup, CPU cycles, clock rate, and instruction count. However, Decorated Python was far costlier in terms of page faults, and cache misses.
+
+
+### C++ Recursive Algorithm
+```markdown
+
 ```
-
-
-
 
 
 ### Jekyll Themes
