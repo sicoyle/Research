@@ -1,6 +1,6 @@
 ## Welcome to Samantha Coyle's Research Page
 
-With hopes to acquire a Masters of Computer Science (MCS) degree, or a PhD in Computer Science, I wanted to begin my research at Texas State University as an undergraduate.
+With hopes to acquire a Masters of Computer Science (MCS) degree or a PhD in Computer Science, I began researching things of interest to me at Texas State University as an undergraduate.
 
 ### Motivation
 
