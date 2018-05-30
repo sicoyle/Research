@@ -91,7 +91,11 @@ In this subsection, the elements used to set up the environment will be describe
 
 \subsection{Execution}
 
-The algorithm used for testing was the Fibonacci algorithm gathered from Rosetta Code [4].
+The algorithm used for testing was the Fibonacci algorithm gathered from Rosetta Code [4]. Rosetta Code is a repository which contains different algorithms with many programming languages to choose from. A recursive and dynamic version of the Fibonacci algorithm was used from this site for the testing algorithm. Fibonacci values of 20, 30, 40, and 50 were used as function parameters for testing purposes. The data that was collected included: task-clock, CPU-cycles, instruction count, the number of CPUs utilized, a time sum (user + system time), clock rate, instructions per second, elapsed time, page-faults, cache-misses, and percent of all cache refs. Speedup was also calculated using the execution times.
+
+\subsection{Analysis}
+
+A profile monitoring resource was used to monitor the resource consumption of the algorithms. Perf is a sample based Linux profiler which monitors Linux perf events [5].
 
 \begin{scriptsize}
 \begin{table}[h!]
