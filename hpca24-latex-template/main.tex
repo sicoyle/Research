@@ -65,23 +65,21 @@ The programming language of C, created in 1972, is often chosen when speed is a 
 
 We utilized four languages in our study:
 
-\begin{itemize}
-\item C is a compiled language created in 1972 at Bell Labs for UNIX system implementation [1]. C is the basis of the programming languages of Java and C++. It is often chosen when speed is a priority for inputs consisting of large data sets [2]. Although it isn't the most simple language to develop with, it is a major player in High Performance Computing (HPC) because of its efficiency in performance [3].
-\item Go is a relatively new programming language created by Google. Go is useful for systems programming and scalable network servers. It is a close second behind C when it comes to speed, and is a relatively simple language to develop with [3]. It is based upon C's implementation; however, it was developed with a focus on a simpler design for the programmer [3]. 
-\item Python is an interpreted language created in 1991 [4]. It has recently ADDDDDDDDDDDDD
-\item No page limit for references.
-\item The references must include complete author lists (no {\em et al.}).
-\item Authors of {\em all} accepted papers will be required to give a lightning presentation (about 90s) and a poster in addition to the regular conference talk.
-\end{itemize}
+\begin{enumerate}
+\item {\em}C is a compiled language created in 1972 at Bell Labs for UNIX system implementation [1]. C is the basis of the programming languages of Java and C++. It is often chosen when speed is a priority for inputs consisting of large data sets [2]. Although it isn't the most simple language to develop with, it is a major player in High Performance Computing (HPC) because of its efficiency in performance [3].
+\item {\em}Go is a relatively new programming language created by Google. Go is useful for systems programming and scalable network servers. It is a close second behind C when it comes to speed, and is a relatively simple language to develop with [3]. It is based upon C's implementation; however, it was developed with a focus on a simpler design for the programmer [3]. 
+\item {\em}Python is an interpreted language created in 1991 [4]. It has recently made a large presence in the HPC world through its packages, such as NumPy, SciPy, and scikit-learn; with these packages, Python applications are optmized to take full advantage of the present architecture [4]. With such a presence in HPC, it is clear that Python is here to stay.
+\item  {\em}Perl is a common scripting language that utilizes an interpreter. Like Python, it too, has a large variety of libraries to pull from. Perl is qucker and more efficient than Python in term of input/output operations [5]. In addition, Perl is a useful language due to it having a large number of parallel computing modules available.
+\end{enumerate}
 
 
 \subsection{Decorated Python}
 
-As a way to make Python more comparable to the execution speed of C, a decorator function with a wrapper was implemented. Decorator functions are more commonly utilized for tracing, locking, or logging [5]. However, a decorator function combined with a Python wrapper can also be created as a way to make a program more dynamic by having it remember the results needed later for computation. This allowed its performance to be much quicker than that of C.
+As a way to make Python more comparable to the execution speed of C, a decorator function with a wrapper was implemented. Decorator functions are more commonly utilized for tracing, locking, or logging [6]. However, a decorator function combined with a Python wrapper can also be created as a way to make a program more dynamic by having it remember the results needed later for computation. This allowed its performance to be much quicker than that of C in terms of execution time.
 
 \subsection{Inline C}
 
-A method to optimize C was also explored utilizing the keyword "inline" before the function call. Inline is a useful tool with smaller functions that will be called multiple times in order to reduce function overhead. Utilizing the inline keyword reduces function call overhead by replacing the actual call with the contents of the function itself. Because of this replacement of the function call with the function contents, it is not very useful with multiple recursive calls as there will be a tradeoff in terms of instruction count and efficiency.
+A method to optimize C was also explored utilizing the keyword ''inline'' before the function call. Inline is a useful tool with smaller functions that will be called multiple times in order to reduce function overhead. Utilizing the inline keyword reduces function call overhead by replacing the actual call with the contents of the function itself. Because of this replacement of the function call with the function contents, it is not very useful with multiple recursive calls as there will be a tradeoff in terms of instruction count and efficiency.
 
 \section{Experimental Methodology}
 
@@ -93,11 +91,11 @@ In this subsection, the elements used to set up the environment will be describe
 
 \subsection{Execution}
 
-The algorithm used for testing was the Fibonacci algorithm gathered from Rosetta Code [7]. Rosetta Code is a repository which contains different algorithms with many programming languages to choose from. A recursive and dynamic version of the Fibonacci algorithm was used from this site for the testing algorithm. Fibonacci values of 20, 30, 40, and 50 were used as function parameters for testing purposes.
+The algorithm used for testing was the Fibonacci algorithm gathered from Rosetta Code [8]. Rosetta Code is a repository which contains different algorithms with many programming languages to choose from. A recursive and dynamic version of the Fibonacci algorithm was used from this site for the testing algorithm. Fibonacci values of 20, 30, 40, and 50 were used as function parameters for testing purposes.
 
 \subsection{Analysis}
 
-A profile monitoring resource was used to monitor the resource consumption of the algorithms in order to collect data. Perf is a sample based Linux profiler which monitors Linux perf events [8]. It was utilized for every trial, testing task-clock, CPU-cycles, instruction count, the number of CPUs utilized, clock rate, instructions per second, elapsed time, page-faults, cache-misses, and percent of all cache references. The time command was also used to calculate the time sum consisting of user and system time. Speedup was calculated using the execution times between the different languages.
+A profile monitoring resource was used to monitor the resource consumption of the algorithms in order to collect data. Perf is a sample based Linux profiler which monitors Linux perf events [9]. It was utilized for every trial, testing task-clock, CPU-cycles, instruction count, the number of CPUs utilized, clock rate, instructions per second, elapsed time, page-faults, cache-misses, and percent of all cache references. The time command was also used to calculate the time sum consisting of user and system time. Speedup was calculated using the execution times between the different languages.
 
 \begin{scriptsize}
 \begin{table}[h!]
