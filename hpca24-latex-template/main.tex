@@ -13,6 +13,7 @@
 \usepackage[normalem]{ulem}
 \usepackage[hyphens]{url}
 \usepackage{hyperref}
+\usepackage{amsmath}
 
 %%%%%%%%%%%---SETME-----%%%%%%%%%%%%%
 \newcommand{\hpcasubmissionnumber}{XXX}
@@ -57,7 +58,7 @@ This paper presents comparisons between several different programming languages,
 
 \section{Background}
 
-In this section, there will be a list of several key concepts and formulas relevant to this research. While this work focuses mainly on C and Python, the generalizations mentioned can be applied to the general concept of compiled languages as opposed to interpreted languages. For this research, C and Go were chosen as the compiled languages, and Perl and Python were chosen for the interpreted languages. 
+In this section, there will be a list of several key concepts and formulas relevant to this research. While this work focuses mainly on C and Python, the generalizations mentioned can be applied to the general concept of compiled languages as opposed to interpreted languages. 
 
 \subsection{Programming Languages}	
 
@@ -66,8 +67,9 @@ We utilized four languages in our study:
 \begin{enumerate}
 \item {\em}C is a compiled language created in 1972 at Bell Labs for UNIX system implementation [1]. C is the basis of the programming languages of Java and C++. It is often chosen when speed is a priority for inputs consisting of large data sets [2]. Although it isn't the most simple language to develop with, it is a major player in High Performance Computing (HPC) because of its efficiency in performance [3].
 \item {\em}Go is a relatively new programming language created by Google. Go is useful for systems programming and scalable network servers. It is a close second behind C when it comes to speed, and is a relatively simple language to develop with [3]. It is based upon C's implementation; however, it was developed with a focus on a simpler design for the programmer [3]. 
-\item {\em}Python is an in-ter-preted lang-uage created in 1991 [4]. It has recently made a large presence in the HPC world through its pack-ages, such as NumPy, SciPy, and scikit-learn; with these pack-ages, Python applications are optmized to take full advantage of the present architecture [4]. With such a presence in HPC, it is clear that Python is here to stay.
-\item  {\em}Perl is a common scripting language that utilizes an interpreter. Like Python, it too, has a large variety of libraries to pull from. Perl is qucker and more efficient than Python in term of input/output operations [5]. In addition, Perl is a useful language due to it having a large number of parallel computing modules available.
+\item {\em}Python is an interpreted language created in 1991 [4]. It has recently made a presence in the HPC world through its packages, such as NumPy, SciPy, and scikit-learn; with these pack-ages, Python applications are optimized to take full 
+ad-vantage of the present architecture [4]. With such a presence in HPC, it is clear that Python is here to stay.
+\item  {\em}Perl is a common scripting language that utilizes an interpreter. Like Python, it too, has a large variety of libraries to pull from. Perl is quicker and more efficient than Python in term of input/output operations [5]. In addition, Perl is a useful language due to it having a large number of parallel computing modules available.
 \end{enumerate}
 
 
@@ -85,11 +87,11 @@ In the following subsections, the different aspects of this study will be descri
 
 \subsection{Environment}
 
-In this subsection, the elements used to set up the environment will be described. We used an Intel NUC NUC5CPYH with ubuntu 16.04 installed, a gcc version of 5.4.0, and python 2.7. We installed the other necessary languages for the experiment, so that the NUC had Perl, Python, C, and Go installed. We also installed perf, a resource monitoring utility, so that we could monitor the resource consumption of the different languages.    
+In this subsection, the elements used to set up the environment will be described. We used an Intel NUC NUC5CPYH with Ubuntu 16.04 installed, a gcc version of 5.4.0, and python 2.7. We installed the other necessary languages for the experiment, so that the NUC had Perl, Python, C, and Go installed. We also installed perf, a resource monitoring utility, so that we could monitor the resource consumption of the different languages.    
 
 \subsection{Execution}
 
-The algorithm used for testing was the Fibonacci algorithm gathered from Rosetta Code [8]. Rosetta Code is a repository which contains different algorithms with many programming languages to choose from. A recursive and dynamic version of the Fibonacci algorithm was used from this site for the testing algorithm. Fibonacci values of 20, 30, 40, and 50 were used as function parameters for testing purposes.
+The Fibonacci algorithm gathered from Rosetta Code was utilized as the testing algorithm [8]. Rosetta Code is a repository which contains different algorithms with many programming languages to choose from. A recursive and dynamic version of the Fibonacci algorithm was used from this site for the testing algorithm. Fibonacci values of 20, 30, 40, and 50 were used as function parameters for testing purposes.
 
 \subsection{Analysis}
 
@@ -107,58 +109,36 @@ The overall runtime for the recursive algorithms were larger than the dynamic al
 The runtimes of Python and Perl appear to be essentially infinite near the Fibonacci number of 30 with the result that no data could be collected for higher numbers. Perl showed a recursive runtime increase of 99.97 percent up to the Fibonacci number of 40. It’s interesting that Go was 99.97 percent slower than C, another compiled language, for the recursive algorithm. Also surprisingly, the dynamic algorithm showed a higher runtime for C and Go, versus Perl and Python rather than the inverse, which was expected. Being that interpreted languages are interpreted one line at a time, they generally execute slower. However, in this experiment, they executed faster for the dynamic algorithm. This inconsistency can be explained by the default optimization levels of each of the programs potentially being different, or issues with the scope of the Fibonacci numbers. In addition, Go had an unusually high resource consumption possibly due to perf not calculating the results properly as its results are sample based. Furthermore, all languages should have increased more for the dynamic algorithmic instruction count, as the overhead increased; however, this was not the case. The task-clock rates also should have increased more, but there was a maximum increase of 3.35 percent for the language of Perl.
 
 \subsection{C Versus Python Results}
-C consistently outperformed Python on task-clock time, CPU-cycles, instruction count, instructions per second, and elapsed time. When it came to speedup calculations, C greatly outperformed Python by at least a factor of 28 over Python for fib of 20-40, with fib of 5 for the intervals. Regarding the memory resources, Python had significantly more page faults than C overall. For both the recursive algorithm, and the dynamic algorithm, C had around 40 page faults, whereas Python had about 800 page faults for both its recursive and dynamic algorithm for all fib numbers evaluated. As for the cache misses, Python also fared worse. Python showed exponential growth for its re-cur-sive algorithm cache miss-es, start-ing at about 300000, where-as C start-ed around 15000 for its cache misses, and also depicted exponential growth. Python also had more cache misses in the dynamic algorithm with about 270000 cache misses, whereas C had about 7800 cache misses for the dynamic algorithm. In addition, the cache misses’ percent of all cache references decreased substantially for Python from 16 to just above 0 for fib of 20-40; this trend was similar to C’s performance, but from a starting point of 25 down to 10. A cache miss is when the data requested for is not in the cache memory and requires the program to fetch the data from other cache levels, or main memory. These high percentages for the cache misses as a percent of all cache references can lead to significant delays in execution time.
+C consistently outperformed Python on task-clock time, CPU-cycles, instruction count, instructions per second, and elapsed time. When it came to speedup calculations, C greatly outperformed Python by at least a factor of 28 over Python for Fibonacci of 20 through Fibonacci of 40, with the number 5 chosen for the test intervals. Regarding the memory resources, Python had significantly more page faults than C. For both the recursive algorithm, and the dynamic algorithm, C consistently had around 41 page faults, whereas Python had at least 797 page faults for both its recursive and dynamic algorithm for all Fibonacci numbers evaluated. As for cache misses, Python also fared worse. Python showed exponential growth for its recursive algorithm cache misses, averaging 269,000 cache misses, whereas C averaged 10,500 for its cache misses, and also depicted exponential growth. Python also had more cache misses in the dynamic algorithm with an average of 270,000 cache misses, whereas C had an average of 7820 cache misses for the dynamic algorithm. In addition, the cache misses percent of all cache references decreased substantially for Python from 16\% to just above 0\% for Fibonacci values of 20 through 40; this trend was similar to C\'s performance, but from a starting point of 25\% down to 10\%. A cache miss is when the data requested for is not in the cache memory and requires the program to fetch the data from other cache levels, or main memory. These high percentages for the cache misses as a percent of all cache references can lead to significant delays in execution time to due the necessity of travelling up the memory heirarchy.
 
 \subsection{Inline C Versus C Results}
-C remained under 1 millisecond for all Fibonacci numbers tested, but inline C went all the way up to 3247.92 milliseconds. C utilized 858,889,235,221 CPU cycles for Fibonacci of 50, whereas inline C only got up to 6,971,907,740 CPU cycles. Inline C utilized a lot more instructions than C did, being that the idea behind the keyword “inline” reduces the amount of function calls by replacing the function call with the contents of the function itself. Both forms of C had about the same number of CPUs utilized. Interestingly, inline C used 100 percent less GHz for its clock rate compared to C for Fibonacci of 20, but inline C and C grow to about the same clock rate after Fibonacci of 50. Initially, inline C had more than double the number of instructions per second than C; however, as the Fibonacci value increased for the function parameter input, the processor speed for both equated to about the same. Both inline C and C had the same average number of page-faults, cache misses, and percent of all cache refs being cache misses. The one-minute difference between the two include C increasing a bit, and then gradually decreasing, while inline C decreases drastically, increases a bit, and then decreases at a more gradual pace.
+C remained under 1 millisecond for all Fibonacci numbers tested, but inline C went all the way up to 3247.92 milliseconds. C utilized 858,889,235,221 CPU cycles for Fibonacci of 50, whereas inline C only went through 6,971,907,740 CPU cycles. Inline C utilized a lot more instructions than C did; being that the idea behind the keyword “inline” reduces the amount of function calls by replacing the function call with the contents of the function itself, inline C resulted in more instructions. Both forms of C had about the same number of CPUs utilized. Interestingly, inline C used 100\% less GHz for its clock rate compared to C for Fibonacci of 20. However, inline C and C grew to about the same clock rate after Fibonacci of 50. Initially, inline C had more than double the number of instructions per second than C; however, as the Fibonacci value increased for the function parameter input, the processor speed for both equated to about the same. Both inline C and C had the same average number of page-faults, cache misses, and percent of all cache refs being cache misses. The one small difference between the two is the change in their percent of all cache references being cache misses. According to the graphs, C increasing a bit, and then gradually decreasing, while inline C decreased drastically, increased a bit, and then decrease at a more gradual pace down to almost 0\%.
 
 \subsection{Decorated Python Versus Python Results}
-Py-thon took long-er for its task clock rates than that of Dec-o-rated Py-thon with Fib of 40 be-ing 91871.376 mill-i-sec-onds for Py-thon, and a-bout 36 mill-i-sec-onds for Decorated Python. Decorated Python used far few-er CPU cy-cles with its high-est a-round 61,000,000, and Python us-ing around 132,298,225,415 cy-cles for Fib of 40. Dec-o-rated Py-thon also used far few-er in-struc-tions, and a small-er clock rate. Dec-o-rated Py-thon did use more in-struc-tions, hav-ing a-round 2,500,000,000,000 in-struc-tions, and Py-thon us-ing a-round 28,000,000. With re-gard to cache, Dec-o-rated Py-thon was costl-ier hav-ing more page faults. How-ev-er, it sig-nif-icant-ly im-proved cache miss-es from al-most 42,500,000 cache miss-es with Py-thon to al-most 290,000 cache misses with Dec-o-rated Py-thon. It’s in-ter-est-ing to note that Py-thon had a con-tin-ual de-cline down to al-most 0 per-cent for its cache miss-es as a per-cent of all cache ref-er-en-ces; where-as Dec-o-rated Py-thon re-main-ed con-stant at 15 per-cent for Fibonacci values of 20 through 100. nnnnn took long-er for its task clock rates than that of Dec-o-rated Py-thon with Fib of 40 be-ing 91871.376 mill-i-sec-onds for Py-thon, and a-bout 36 mill-i-sec-onds for Dec-o-rated Py-thon. Dec-o-rated Py-thon used far few-er CPU cy-cles with its high-est a-round 61,000,000, and Py-thon us-ing a-round 132,298,225,415 cy-cles for Fib of 40. Dec-o-rated Py-thon also used far few-er in-struc-tions, and a small-er clock rate. Dec-o-rated Py-thon did use more in-struc-tions, hav-ing a-round 2,500,000,000,000 in-struc-tions, and Py-thon us-ing a-round 28,000,000. With re-gard to cache, Dec-o-rated Py-thon was cost-lier hav-ing more page faults. How-ever, it sig-nif-icant-ly im-proved cache misses from al-most 42,500,000 cache misses with Python to almost 290,000 cache misses with Decorated Python. It’s interesting to note that Python had a continual decline down to almost 0 percent for its cache misses as a percent of all cache references; whereas Decorated Python remained constant at 15 percent for Fibonacci values of 20 through 100.
+Python took longer for its task clock rates than that of Decorated Python with Fib of 40 being 91871.376 milliseconds for Python, and about 36 milliseconds for Decorated Python. Decorated Python used far fewer CPU cycles with its highest number of CPU cycles at 60976899.33 and Python at 132,298,225,415 cycles for Fibonacci of 40. Decorated Python also used far fewer instructions and had a smaller clock rate. Decorated Python executed 28,075,491.67 instructions. Python executed 251,140,228,546 instructions, which is 89.45\% more instructions for Python. In terms of memory access, Decorated Python was costlier because of its large amount of page faults. However, decorated Python significantly improved its cache misses from Python. For Fibonacci of 40, Python had 42,700,000 cache misses and Decorated Python had 274,928 cache misses. Decorated Python maintained about 270,000 cache misses for all Fibonacci values tested, yet Python increased exponentially up from 269,000 cache misses up to 427,000 cache misses. It is also interesting to note that Python had a continual decline down to almost 0\% for its cache misses as a percent of all cache references; Decorated Python remained constant at 15\% for Fibonacci values of 20 through 100. Python overall had a continual decline down to almost 0\% for its cache misses as a percent of the total cache references, whereas Decorated Python remained constant at 15\% for Fibonacci of 20 through Fibonacci of 100. Python took longer for its task clock rates than that of decorated Python with Fibonacci of 40 being 91,871.376 milliseconds for Python, and about 36 milliseconds for Decorated Python. Decorated Python used fewer CPU cycles with its highest at 60,976,899.33 CPU cycles, and Python\'s highest at 132,298,225,415 CPU cycles for Fibonacci of 40. With regard to memory access, Decorated Python was had a few more page faults than Python. Decorated Python had anywhere from 810 to 820 page faults. Python had at most 799 page faults.
 
 \subsection{C Versus Decorated Python Results}
-C was fast-er than Dec-o-rated Py-thon with a speed-up of al-most 30 for Fib-o-nacci of 20, but the two switched places after Fib-o-nacci of 30, with Dec-orated Python ending Fibonacci of 40 almost 90 times faster than C. Dec-o-rated Py-thon had few-er CPU cy-cles at 60,976,899.33 cy-cles, with C us-ing 858,889,235,221. Dec-o-rated Py-thon also out-per-formed C in regard to in-stru-ction count, hav-ing 28,075,491.67 in-struc-tions, and C us-ing 6,169,788,902. Both used a-bout 0.9 CPUs, but C used 2.156 GHz, and Dec-o-rated Py-thon only used 1.666 GHz for Fibonacci of 40. On the other hand, Dec-o-rated Py-thon had at least 810 page faults for every Fibonacci value tested, whereas C had at most 41 page faults. Decorated Python was also costlier for cache misses. However, C’s cache misses as a percent of all cache references decreased from about 25 percent to 10 percent and Decorated Python maintained 15 percent for every trial.
+FIX BENEATH PARAGRAPH
+C was faster than Dec-o-rated Py-thon with a speed-up of al-most 30 for Fib-o-nacci of 20, but the two switched places after Fib-o-nacci of 30, with Dec-orated Python ending Fibonacci of 40 almost 90 times faster than C. Dec-o-rated Py-thon had few-er CPU cy-cles at 60,976,899.33 cy-cles, with C us-ing 858,889,235,221. Dec-o-rated Py-thon also out-per-formed C in regard to in-stru-ction count, hav-ing 28,075,491.67 in-struc-tions, and C us-ing 6,169,788,902. Both used a-bout 0.9 CPUs, but C used 2.156 GHz, and Dec-o-rated Py-thon only used 1.666 GHz for Fibonacci of 40. On the other hand, Dec-o-rated Py-thon had at least 810 page faults for every Fibonacci value tested, whereas C had at most 41 page faults. Decorated Python was also costlier for cache misses. However, C’s cache misses as a percent of all cache references decreased from about 25 percent to 10 percent and Decorated Python maintained 15 percent for every trial.
 
 \begin{scriptsize}
 \begin{table}[h!]
   \centering
   \begin{tabular}{|l|l|}
     \hline
-    \textbf{Field} & \textbf{Value}\\
+    \textbf{Language} & \textbf{Execution Time}\\
     \hline
+    C \\
     \hline
-    File format & PDF \\
+    Inline C & C"'"s execution time {\bf bold}\\
     \hline
-    Page limit & 11 pages, {\bf not including}\\
-               & {\bf references or the}\\
-               & {\bf optional 1-page }\\
-               & {\bf Appendix}\\
+    Go & Go's execution time $\times$ 11in\\
     \hline
-    Paper size & US Letter 8.5in $\times$ 11in\\
+    Python & Python's time\\
     \hline
-    Top margin & 1in\\
+    Decorated Python & it's execution time\\
     \hline
-    Bottom margin & 1in\\
-    \hline
-    Left margin & 0.75in\\
-    \hline
-    Right margin & 0.75in\\
-    \hline
-    Body & 2-column, single-spaced\\
-    \hline
-    Space between columns & 0.25in\\
-    \hline
-    Body font & 10pt\\
-    \hline
-    Abstract font & 10pt, italicized\\
-    \hline
-    Section heading font & 12pt, bold\\
-    \hline
-    Subsection heading font & 10pt, bold\\
-    \hline
-    Caption font & 9pt (minimum), bold\\
-    \hline
-    References & 8pt, no page limit, list \\
-               & all authors' names\\
+    Perl & execution time\\
     \hline
   \end{tabular}
   \caption{Formatting guidelines for submission. }
