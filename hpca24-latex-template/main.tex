@@ -121,55 +121,94 @@ Python took longer for its task clock rates than that of Decorated Python with F
 C was faster than Decorated Python with a speedup of almost 30 for Fibonacci of 20. Contrarily, the two switched places after Fibonacci of 30, with Decorated Python ending Fibonacci of 40 almost 90 times faster than C. Decorated Python had fewer CPU cycles at 60,976,899.33 cycles, with C at 858,889,235,221. Decorated Python outperformed C in regard to instruction count, having 28,075,491.67 instructions, and C at 6,169,788,902. Both used about 0.9 CPUs, but C used 2.156 GHz, and Decorated Python only used 1.666 GHz for Fibonacci of 40. That is a difference of 77.27\%. On the other hand, Decorated Python had at least 810 page faults for every Fibonacci value tested, whereas C had at most 41 page faults. Decorated Python was also costlier for cache misses. However, Cs cache misses as a percent of all cache references decreased from about 25\% to 10\% and Decorated Python maintained 15\% for every trial.
 
 \begin{scriptsize}
-\begin{table}[h!]
+\begin{table}[ht!]
   \centering
   \begin{tabular}{|l|l|}
     \hline
-    \textbf{Language} & \textbf{Execution Time}\\
+    \textbf{Fibonacci Number} & \textbf{Execution Time (sec)}\\
     \hline
-    C - Fib of 20 & 0.04 sec\\
+    20 & 0.04\\
     \hline
-	I C - Fib of 20 & 0.0036 sec\\
+    25 & 0.007333\\
 	\hline
-    Python - Fib of 20 & 0.0097 sec\\
+	30 & 0.01\\
+	\hline
+	35 & 0.296667\\
+	\hline
+	40 & 1.2967\\
+	\hline
+\end{tabular}
+\caption{Execution time results for the recursive algorithm for C.}
+\label{table:formatting}
+\end{table}
+\end{scriptsize}
+
+\begin{scriptsize}
+\begin{table}[ht!]
+  \centering
+  \begin{tabular}{|l|l|}
     \hline
-    D Py - Fib of 20 & 0.03 sec\\
+    \textbf{Fibonacci Number} & \textbf{Execution Time (sec)}\\
     \hline
-    C - Fib of 25 & .007333 sec\\
+    20 & 0.0036\\
     \hline
-	I C - Fib of 25 & 0.005333 sec\\
+    25 & 0.005333\\
 	\hline
-	Python - Fib of 25 & 0.107333 sec\\
+	30 & 0.032\\
 	\hline
-    D Py - Fib of 25 & 0.031333 sec\\
+	35 & 0.29333\\
+	\hline
+	40 & 3.2386667\\
+	\hline
+\end{tabular}
+\caption{Execution time results for the recursive algorithm for Inline C.}
+\label{table:formatting}
+\end{table}
+\end{scriptsize}
+
+\begin{scriptsize}
+\begin{table}[ht!]
+  \centering
+  \begin{tabular}{|l|l|}
     \hline
-    C - Fib of 30 & 0.01 sec\\
-	\hline
-	I C - Fib of 30 & 0.032 sec\\
-	\hline
-	Python - Fib of 30 & 0.36 sec\\
-	\hline
-	D Py - Fib of 30 & 0.0316667 sec\\
-	\hline
-	C - Fib of 35 & 0.296667 sec\\
-	\hline
-	I C - Fib of 35 & 0.29333 sec\\
-	\hline
-	Python - Fib of 35 & 8.330167 sec\\
-	\hline
-	D Py - Fib of 35 & 0.31333 sec\\
-	\hline
-	C - Fib of 40 & 1.2967 sec\\
-	\hline
-	I C - Fib of 40 & 3.2386667 sec\\
-	\hline
-	Python - Fib of 40 & 82.847 sec\\
-	\hline
-	D Py - Fib of 40 & 0.032333 sec\\
+    \textbf{Fibonacci Number} & \textbf{Execution Time (sec)}\\
     \hline
-  \end{tabular}
-  \caption{Execution time results for the recursive algorithm.}
-  \label{table:formatting}
+    20 & 0.0097\\
+    \hline
+    25 & 0.107333\\
+	\hline
+	30 & 0.36\\
+	\hline
+	35 & 8.330167\\
+	\hline
+	40 & 82.847\\
+	\hline
+\end{tabular}
+\caption{Execution time results for the recursive algorithm for Python.}
+\label{table:formatting}
+\end{table}
+\end{scriptsize}
+
+\begin{scriptsize}
+\begin{table}[ht!]
+  \centering
+  \begin{tabular}{|l|l|}
+    \hline
+    \textbf{Fibonacci Number} & \textbf{Execution Time (sec)}\\
+    \hline
+    20 & 0.03\\
+    \hline
+    25 & 0.031333\\
+	\hline
+	30 & 0.0316667\\
+	\hline
+	35 & 0.031333\\
+	\hline
+	40 & 0.032333\\
+	\hline
+\end{tabular}
+\caption{Execution time results for the recursive algorithm for Decorated Python.}
+\label{table:formatting}
 \end{table}
 \end{scriptsize}
 
