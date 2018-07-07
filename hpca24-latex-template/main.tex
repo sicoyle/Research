@@ -212,18 +212,19 @@ C was faster than Decorated Python with a speedup of almost 30 for Fibonacci of 
 \end{table}
 \end{scriptsize}
 
-\textbf{Please ensure that you include page numbers with your
-submission}. This makes it easier for the reviewers to refer to different
-parts of your paper when they provide comments.
+In each of the tables above, the time exponentially increases as the Fibonacci value increments for the languages of C, Inline C, and Python. Table 3 depicts Python growing at the quickest speed, having a periodic growth rate of 1.18 seconds per Fibonacci Number increment. It's counterpart, Decorated Python, in Table 4 possesses the slowest exponential growth at 0.015 for its periodic growth rate. C in Table 1 is higher at 0.69 for its periodic growth rate, and Inline C shows a periodic growth rate of 1.36. It is interesting to see an interpretted language optimized with a decorated function beating out one of the quickest compiled languages.
 
-Please ensure that your submission has a banner at the top of the
-title page, similar to
-\href{http://hpca2018.ece.ucsb.edu/docs/hpca24.pdf}{this one},
-which contains the submission number and the notice of
-confidentiality.  If using the template, just replace XXX with your
-submission number.
+\subsection{Summary Statements}
 
-\subsection{Content}
+It was shown that the common thought of compiled languages beating out interpretted languages in terms of execution time is not always the case; optimizations can be made to make Python a valid competitor to the compiled language of C. Even Inline C could not compete with Decorated Python when it came down to execution time. At the same time, C outperformed Python in almost every other regard. Python was much less efficient with memory allocation, resulting in more page faults and cache misses for its results. This can be due to the differences in the way that Python and C structure their memory layouts. C utilizes a stack frame, whereas Python ustilizes Python objects and a private heap. Utilizing the stack is proven to be more efficient than using a heap, as a stack is trivial to allocate and deallocate memory. The heap takes longer to access due to its more complex bookkeeping of memory allocation and freeing of memory.
+
+In addition, with many recursive calls, C would be the better choice with a faster execution time. However, inline C used far fewer CPU cycles, with hundreds of millions more instructions than C did. When it comes down to the cache, there is little difference between Inline C and C.
+
+Having a decorated Python function takes a bit longer to execute, but it significantly improved the number of CPU cycles utilized, the number of instructions executed, and far fewer cache misses. Decorated Python does take a hit with more page faults and a constant of about 15\% of all cache references being cache misses. Decorated Python outperformed C in regard to execution time and speedup, CPU cycles, clock rate, and instruction count. However, Decorated Python was far costlier in terms of page faults, and cache misses.
+
+\subsection{Conclusion}
+
+Due to the massive data sets created by the Internet of things and cloud computing, algorithmic efficiency is of the utmost importance in today's computing environment. In this paper we have looked at several programming languages depicting widely differing architectures, to include compiled and interpreted languages. Their performance was analyzed using the Fibonacci algorithm with Fibonacci of 20 up to Fibonacci of 50 with 5 as the increment. 
 
 \noindent\textbf{\sout{Author List.}} Reviewing will be double blind;
 therefore, please do not include any author names on any submitted
